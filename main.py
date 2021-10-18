@@ -1,7 +1,7 @@
 import pandas as pd
 import csv
-from os.path import dirname # gets parent folder in a path
-from os.path import join # concatenate paths
+from os.path import dirname  # gets parent folder in a path
+from os.path import join  # concatenate paths
 import numpy as np
 import re
 import fileinput
@@ -64,16 +64,19 @@ def replace_bonds_index_w_name(atoms, bonds, name):
     df_output = df_output.drop("one", axis=1)
     print("len", len(atoms))
     for i in range(len(atoms)):
-        # print(atoms["residu"].loc[i])
-        if atoms["residu"].loc[i] == atoms["residu"].loc[0]:
-            print(i, atoms["residu"].loc[i], atoms["atom"].loc[i])
-            current_atom = atoms["atom"].loc[i]
-            df_output["ai"] = df_output["ai"].replace(i + 1, current_atom)
-            df_output["aj"] = df_output["aj"].replace(i + 1, current_atom)
-        else:
-            print(i, atoms["residu"].loc[i], "dropped")
-            df_output = df_output.drop(df_output.index[df_output["ai"] == i])
-            df_output = df_output.drop(df_output.index[df_output["aj"] == i])
+        print(i, atoms["residu"].loc[i], atoms["atom"].loc[i])
+        current_atom = atoms["atom"].loc[i]
+        df_output["ai"] = df_output["ai"].replace(i + 1, current_atom)
+        df_output["aj"] = df_output["aj"].replace(i + 1, current_atom)
+        # if atoms["residu"].loc[i] == atoms["residu"].loc[0]:
+        #     print(i, atoms["residu"].loc[i], atoms["atom"].loc[i])
+        #     current_atom = atoms["atom"].loc[i]
+        #     df_output["ai"] = df_output["ai"].replace(i + 1, current_atom)
+        #     df_output["aj"] = df_output["aj"].replace(i + 1, current_atom)
+        # else:
+        #     print(i, atoms["residu"].loc[i], "dropped")
+        #     df_output = df_output.drop(df_output.index[df_output["ai"] == i])
+        #     df_output = df_output.drop(df_output.index[df_output["aj"] == i])
         # print(current_atom)
     with open(str(name + "_input.txt"), 'w') as f:
         dfAsString = df_output.to_string(header=False, index=False)

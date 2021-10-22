@@ -89,7 +89,7 @@ def replace_bonds_index_w_name(atoms, bonds, name):
 if __name__ == '__main__':
     gromacs.config.setup()
     # table_names = ["[ atoms ]", "[ bonds ]"]
-    name = "POPC"  # POPC CHL1 GLPA itp
+    name = "POPC"  # POPC CHL1 CER / GLPA itp
     # generate_input(itp_file)
     # itp = gromacs.fileformats.ITP(str(name + ".itp"))
     # gromacs.fileformats.convert
